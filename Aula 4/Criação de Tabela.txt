@@ -1,0 +1,57 @@
+Resposta 2 versão 1
+
+create table 
+capa_de_lote_de_consultas_beneficiario_intercambio
+(
+pk_capa_de_lote_de_consultas_beneficiario_intercambio_id int
+primary key,
+quantidade_de_planilhas int,
+numero_capa_lote int,
+competencia varchar2(300),
+prestador varchar2(400),
+fk_procedimento_id int,
+digitado_por varchar2(150),
+digitado_por_data date,
+analisado_por varchar2(150),
+analisado_por_data date
+
+);
+
+create table procedimento (
+pk_procedimento_id int primary key,
+procedimento_codigo varchar(11),
+procedimento_descricao varchar2(50),
+procedimento_total_consultas int,
+procedimento_total_ch int
+);
+
+
+desc capa_de_lote_de_consultas_beneficiario_intercambio;
+
+
+
+
+Resposta 1 versão 1
+
+create table 
+capa_de_lote_de_consultas_beneficiario_intercambio
+(
+pk_capa_de_lote_de_consultas_beneficiario_intercambio_id int
+primary key,
+quantidade_de_planilhas int,
+numero_capa_lote int,
+competencia varchar2(300),
+prestador varchar2(400),
+procedimento_codigo varchar(11),
+procedimento_descricao varchar2(50),
+procedimento_total_consultas int,
+procedimento_total_ch int,
+digitado_por varchar2(150),
+digitado_por_data date,
+analisado_por varchar2(150),
+analisado_por_data date
+
+);
+
+
+desc capa_de_lote_de_consultas_beneficiario_intercambio;

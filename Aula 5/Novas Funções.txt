@@ -1,0 +1,159 @@
+drop table capa_de_lote_de_consultas_beneficiario_intercambio;
+drop table procedimento  ;
+
+create table procedimento (
+pk_procedimento_id int primary key,
+procedimento_codigo varchar(11),
+procedimento_descricao varchar2(50),
+procedimento_total_consultas int,
+procedimento_total_ch int
+);
+
+create table
+capa_de_lote_de_consultas_beneficiario_intercambio
+(
+pk_capa_de_lote_de_consultas_beneficiario_intercambio_id int
+primary key,
+quantidade_de_planilhas int,
+numero_capa_lote int,
+competencia varchar2(300),
+prestador varchar2(400),
+fk_procedimento_id int,
+digitado_por varchar2(150),
+digitado_por_data date,
+analisado_por varchar2(150),
+analisado_por_data date
+);
+
+
+
+alter table
+    capa_de_lote_de_consultas_beneficiario_intercambio
+    add constraint regra_fk
+    foreign key (fk_procedimento_id)  
+    references procedimento(pk_procedimento_id) ;
+
+
+Insert into procedimento 
+(
+pk_procedimento_id,
+procedimento_codigo,
+procedimento_descricao,
+procedimento_total_consultas,
+procedimento_total_ch
+)
+values
+(2,'1','teste',10,150);
+
+
+
+Insert into capa_de_lote_de_consultas_beneficiario_intercambio
+(
+pk_capa_de_lote_de_consultas_beneficiario_intercambio_id,
+quantidade_de_planilhas,
+numero_capa_lote,
+competencia,
+prestador,
+fk_procedimento_id,
+digitado_por,
+digitado_por_data,
+analisado_por,
+analisado_por_data
+)
+values
+(
+1,
+1,
+1,
+'teste',
+'teste 1234',
+1,
+'Rolfi',
+TO_DATE('04/09/2023','dd/mm/yyyy'),
+'Ana',
+TO_DATE('04/09/2023','dd/mm/yyyy')
+);
+
+
+
+--------
+
+2 Atividade 2
+
+Insert into procedimento 
+(
+pk_procedimento_id,
+procedimento_codigo,
+procedimento_descricao,
+procedimento_total_consultas,
+procedimento_total_ch
+)
+values
+(2,'1','teste',10,150);
+
+------------------------
+Seleção de todas as colunas
+
+SELECT * FROM PROCEDIMENTO;
+
+
+Selecção de uma coluna 
+
+SELECT PK_PROCEDIMENTO_ID FROM PROCEDIMENTO;
+
+Seleção de 2 colunas
+
+SELECT
+    procedimento_total_ch,
+    PK_PROCEDIMENTO_ID 
+    FROM PROCEDIMENTO;
+
+Seleção com Condicional
+
+SELECT   *   FROM PROCEDIMENTO
+    WHERE PK_PROCEDIMENTO_ID=1;
+
+
+Condição (Claúsula Where )
+--Quando achar um válido
+SELECT   *   FROM PROCEDIMENTO
+    WHERE 
+    PK_PROCEDIMENTO_ID=1 
+
+
+--AND os dois válidos
+SELECT   *   FROM PROCEDIMENTO
+    WHERE 
+    PK_PROCEDIMENTO_ID=1 
+    and 
+    PROCEDIMENTO_DESCRICAO='teste 2';
+
+--OR um ou outro válido
+SELECT   *   FROM PROCEDIMENTO
+    WHERE 
+    PK_PROCEDIMENTO_ID=1 
+    or
+    PROCEDIMENTO_DESCRICAO='teste 2';
+
+
+-----------------------------------------
+
+3 Atividad3 3
+
+
+Fazer uma Select para a tabela
+capa_de_lote_de_consultas_beneficiario_intercambio 
+
+Para o pk e o fk com valores 1
+
+pk_capa_de_lote_de_consultas_beneficiario_intercambio_id
+
+fk_procedimento_id
+
+Exemplo:
+
+SELECT   *   FROM PROCEDIMENTO
+    WHERE 
+    PK_PROCEDIMENTO_ID=1 
+    and 
+    PROCEDIMENTO_DESCRICAO='teste 2';

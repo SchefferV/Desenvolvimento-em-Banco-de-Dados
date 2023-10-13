@@ -1,0 +1,27 @@
+AUTO INCREMENT.
+Exemplo
+
+CREATE TABLE identity_demo (
+    id NUMBER GENERATED ALWAYS AS IDENTITY,
+    description VARCHAR2(100) NOT NULL
+);
+
+
+INSERT INTO identity_demo(description)
+VALUES('Oracle identity column demo with GENERATED ALWAYS');
+
+select * from identity_demo;
+
+Fonte: https://www.oracletutorial.com/oracle-basics/oracle-identity-column/
+
+
+-----------------------------------------
+SQL JOIN
+
+select c.id,c.cel,c.tel,c.redesocial ,
+    p.id, p.nome, p.idade, p.sexo, p.cep,p.contato,
+    r.id,r.logradouro,r.bairro,r.cidade,r.estado,r.uf
+   
+from contato c, cadastro p, cep r
+Where
+p.id=c.id and p.cep=r.id;

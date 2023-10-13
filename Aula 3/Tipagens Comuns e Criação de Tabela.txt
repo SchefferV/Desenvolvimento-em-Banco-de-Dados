@@ -1,0 +1,70 @@
+CREATE TABLE Pessoa (
+id NUMBER,
+nome  varchar2(150),
+idade date,	
+sexo NUMBER,
+ESTADOCIVIL INT,
+cep_id int,
+cont_id int
+);
+
+desc Pessoa;
+
+Insert into Pessoa (id,nome,idade,sexo,estadocivil,cep_id,cont_id)
+    values(1,'Ana',
+    TO_DATE(
+    nvl('','19/07/2017 19:49:00'),'DD/MM/YYYY HH24:MI:SS')
+    ,2,2,1,1);
+
+
+
+Exemplo em Json:
+
+{
+
+"id":"221232",
+"nome":"ANA",
+"idade":"12/12/2012",
+"sexo":"F",
+"ESTADOCIVIL":"S",
+"cep_id":"0123",
+"cont_id":"123"
+}
+
+TIPOS DE DADOS
+
+bit - 1 bit - 0 ou 1
+byte - 8 bits - 0000 0000
+int - números inteiro - quantidade	
+long - números inteiros - ex.12345678936521456
+float - números fracionados - 12.30, 100000.33
+real - números fracionados - 111111111.333
+char - letras em pequena quantidade
+varchar2 - LETRAS EX. ABabÇÃ
+
+date - tipos de data
+	20:55 21/08/2023
+	21/08/2023
+	segunda-feira 20:56 21/08/2023	
+	1213134323422
+
+json - 
+	chave-valor
+	{ 
+          [ "nome":"Ana" : 
+		disciplinas:
+		["disc1":"pt",
+		 "disc2":"mt",
+		 "disc3":"his"
+		],
+		disciplinas:[
+		["disc1":"pt",
+		 "disc2":"mt",
+		 "disc3":"his",
+		 "disc4":"ge",
+		 "disc5":"ci"
+		]
+		]
+	  ]
+	}
+BLOB - Binário

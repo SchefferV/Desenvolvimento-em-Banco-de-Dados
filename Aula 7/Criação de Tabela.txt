@@ -1,0 +1,29 @@
+--drop table cep;
+--drop table cadastro;
+
+create table Cep( id int primary key, logradouro varchar2(50), bairro varchar2(30),    cidade varchar2(30),estado    varchar2(30),
+uf varchar2(2) );
+
+create table contato
+(id int primary key,	cel varchar2(20),	tel varchar2(20),redesocial varchar2(80)
+);
+
+create table cadastro(
+Id int primary key,Nome varchar2(50),
+idade int,Sexo varchar2(2),
+cep int,
+contato int,
+    	Constraint fk_cep foreign key (cep) references cep(id),
+	Constraint fk_contato foreign key (contato)
+	references contato(id)
+);
+
+Insert into cep (id,logradouro,bairro,cidade,estado,uf)
+values
+(
+1,'Av Sapopemba','Santa Clara','São Paulo','São Paulo','SP'
+);
+
+Insert into contato (id,cel,tel,redesocial)
+values
+( 1,'055 (011)9123-4569','A')

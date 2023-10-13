@@ -1,0 +1,162 @@
+Select com Operadores Lógicos.
+
+1 -  exemplo - todos os dados
+
+Select * from cadastro
+
+2 -  exemplo - condicional simples
+
+Select * from cadastro
+Where id=5
+
+Select * from cadastro
+Where nome = 'Estevão'
+
+3 - exemplo - portas lógicas (Operadores Lógicos)
+
+Select *  from cadastro
+where
+sexo ='F' and id=1
+
+-----------------------
+Select *  from cadastro
+where
+sexo ='M' or id=1
+
+----------------------------------
+Criação da tabela cadastro.
+
+create table cadastro(
+Id int primary key,
+Nome varchar2(50),
+idade int,
+Sexo varchar2(2)
+);
+
+Insert into cadastro (Id,Nome,idade,Sexo)
+values (1,'Ana',11,'F');
+Insert into cadastro (Id,Nome,idade,Sexo)
+values (2,'Bruno',12,'M');
+Insert into cadastro (Id,Nome,idade,Sexo)
+values (3,'Caio',34,'M');
+Insert into cadastro (Id,Nome,idade,Sexo)
+values (4,'Daniel',56,'M');
+Insert into cadastro (Id,Nome,idade,Sexo)
+values (5,'Estevão',98,'M');
+
+
+sELECT * FROM CADASTRO order by ID;
+
+---------------------
+
+4 Pegar todos os cadastros Femininos da tabela.
+
+Select * from cadastro
+
+WHERE
+sexo = 'F'
+
+5 - Pegar id 6 do cadastro.
+
+
+Select * from cadastro
+Where
+id = 6
+
+6 - Pegar id =1 E sexo = 'F'
+
+Select * from cadastro
+Where
+id = 1 and sexo = 'F'
+
+-----------------
+
+Select * from cadastro
+Where
+id = 1 or sexo = 'F'
+
+------------------
+
+Exemplo e-commerce
+
+
+select * from loginloja
+where
+login='root' or password='root'
+
+login:root
+senha: kali
+
+login='root' and password='root'
+
+------------------
+
+7 - exiba os cadastro por ordem de ID
+
+order by - ordenação POR <nome da coluna>
+Select * from cadastro ORDER by Sexo;
+
+--------------------
+8 - selecione 2 IDs 1 e 3
+
+Select * from cadastro
+where
+id = 1 or id = 3
+
+----------------------
+9 - selecionar por intervalo
+
+Select * from cadastro
+Where
+id >=2 and id<=5;
+
+----------------------------
+10 - Atualização - Update.
+
+ J A M A I S faça isso ...
+
+Update cadastro
+
+SET
+
+nome = "Bruno Silva ;
+------------------------------
+
+
+Update cadastro
+SET
+nome =  'Bruno Silva'
+Where
+id = 2;
+
+------------------------
+
+11 - Deletando campos
+
+
+J A M A I S ...
+
+delete from cadastro;
+
+drop table cadastro; --deleta tabela
+
+
+--
+MODO CORRETO com WHERE
+
+12 - deletando o id = 5
+
+delete from cadastro 
+Where
+id =5;
+
+-----------------------------
+
+
+delete from cadastro 
+Where
+id =5 and sexo ='M'
+
+<* sempre colocar um ID ou chave primária>
+<** na ausência do ID, colocar o máximo de dados
+que possa localizar a tupla>

@@ -1,0 +1,109 @@
+Por razões do campo id da tabela CEP não ser sequencial, não é desejável criar um auto increment ou auto incremento.
+
+create table Cep( 
+id int , logradouro varchar2(50), bairro varchar2(30),    cidade varchar2(30),estado    varchar2(30),
+uf varchar2(2),
+	constraint pk_cep primary key(Id)
+);
+
+Entidade fraca : é uma tabela que sua chave primária é dependente
+de outra chave primária de outra tabela.
+
+create table contato
+(id int,    cel varchar2(20),    tel varchar2(20),redesocial varchar2(80),
+     constraint pk_contato primary key(Id)
+);
+
+
+create table contato
+(id int,    cel varchar2(20),    tel varchar2(20),redesocial varchar2(80),
+	Constraint pk_contato primary key(Id),
+);
+
+create table cadastro(
+Id int GENERATED ALWAYS AS IDENTITY,
+Nome varchar2(50),
+idade int,Sexo varchar2(2),
+cep int,
+contato int,
+	Constraint pk_cadastro primary key(Id),
+        Constraint fk_cep foreign key (cep) references cep(id),
+    Constraint fk_contato foreign key (contato)
+    references contato(id)
+);
+
+===============================================
+Atividade 6 
+
+Insert into cep (id,logradouro,bairro,cidade,estado,uf)
+values (1,'Av Sapopemba','Santa Clara','São Paulo','São Paulo','SP');
+
+Insert into cep (id,logradouro,bairro,cidade,estado,uf)
+values (2,'Rua Um','Bairro Um','São Paulo','São Paulo','SP');
+
+Insert into contato (id,cel,tel,redesocial)
+values ( 1,'055 (011)9123-4569','','A');
+
+Insert into contato (id,cel,tel,redesocial)
+values ( 2,'055 (011)1234-5678','','B');
+   
+Insert into cadastro (id, nome, idade, sexo, cep,contato)
+values (1,'Ana Santos',11,'F',1,1);
+
+Insert into cadastro (nome, idade, sexo, cep,contato)
+values ('Bruno Santos',12,'M',2,2);
+
+
+Chaves primárias gerenciadas pelo SGBDR (Sistema/Serviço de Gerenciamento de Banco de Dados Relacionais), controlam, gerenciam as chaves primárias dentro das Engines.
+Ex.
+
+
+Pessoa p1=new Pessoa();
+Pessoa p2=new Pessoa();
+
+p1 = 12134523443
+p2 = 55652573673
+
+"Generated Always as Identity" -> ele gerencia
+a chave primária.
+
+
+Atividade 7
+
+Exemplo 1:
+
+select 
+    c.ID,c.NOME,c.IDADE,c.SEXO,c.CEP,c.CONTATO,
+    CE.ID,CE.LOGRADOURO,CE.BAIRRO,CE.CIDADE,CE.ESTADO,CE.UF
+from cadastro c, cep ce
+where c.cep=ce.id;
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Exemplo 2:
+
+select 
+    c.ID,c.NOME,c.IDADE,c.SEXO,c.CEP,c.CONTATO,
+    CE.ID,CE.LOGRADOURO,CE.BAIRRO,CE.CIDADE,CE.ESTADO,CE.UF
+from cadastro c, cep ce
+where c.cep=ce.id;
+
+
+-----------------------------------
+
+Retorno do último ID ou elemento da tabela.
+
+nvl(max(id),0)+1  (Operação oracle para buscar
+a última tupla).
+
+
+Insert into contato (id,cel,tel,redesocial)
+values ( nvl(max(id),0)+1 ,'055 (011)9123-4569','','A');
+
+
+
+Insert into contato (id,cel,tel,redesocial)  select nvl(max(id),0)+1,'055 (011)9123-4569','','A' from contato;
+
+
+select * from contato;
